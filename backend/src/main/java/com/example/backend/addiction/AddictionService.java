@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 public class AddictionService {
     private final AddictionRepository addictionRepository;
@@ -20,5 +22,9 @@ public class AddictionService {
         var addiction = new Addiction(name);
         addictionRepository.save(addiction);
         return new AddictionDto(addiction.getId(), addiction.getName());
+    }
+
+    public List<Addiction> getAllAddictions(){
+        return addictionRepository.findAll();
     }
 }
