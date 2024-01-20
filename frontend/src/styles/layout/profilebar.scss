@@ -1,0 +1,46 @@
+.profilebar {
+  transform: translateY(-100px);
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+    border: 1px solid black;
+  }
+
+  .helloSection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: right;
+    width: 100%;
+
+    span {
+      font-size: 20px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 28px;
+      font-variant: small-caps;
+
+      span {
+        font-size: 28px;
+      }
+    }
+
+    .accent {
+      color: #65afc9;
+    }
+  }
+}

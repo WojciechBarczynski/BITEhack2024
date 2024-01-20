@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from 'pages/Home';
 import PageLayout from 'components/layout/PageLayout';
 import 'styles/index.scss'
 import Login from 'pages/auth/Login';
 import Register from 'pages/auth/Register';
+import Profile from 'pages/profile/Profile';
+import Fallback from 'pages/Fallback';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,11 +21,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Fallback />,
       },
       {
-        path: "/test",
-        element: <div>test</div>
+        path: "/profile",
+        element: <Profile />
       }
     ]
   },
