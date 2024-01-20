@@ -24,6 +24,14 @@ public class AddictionService {
         return new AddictionDto(addiction.getId(), addiction.getName());
     }
 
+    public Addiction getAddiction(int addictionId) {
+        var addiction = addictionRepository.findById(addictionId);
+        if (addiction.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No addiction with id " + addictionId);
+        }
+
+        return addiction.get();
+
     public List<Addiction> getAllAddictions(){
         return addictionRepository.findAll();
     }

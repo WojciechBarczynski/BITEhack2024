@@ -60,6 +60,14 @@ public class UserService {
                 .toList();
     }
 
+    public User getUser(int userId) {
+        var user = userRepository.findById(userId);
+        if (user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No user with id " + userId);
+        }
+
+        return user.get();
+
     public void addAddiction(int userId, int addictionId){
         var user = userRepository.findById(userId);
 
