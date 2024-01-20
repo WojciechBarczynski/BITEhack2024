@@ -5,20 +5,23 @@ import predictions
 app = Flask(__name__)
 
 
-@app.route('/predictions/lungCancer', methods=['GET'])
+@app.route("/predictions/lungCancer", methods=["GET"])
 def hello_world():
     args = request.args
-    # years
-    age = int(args.get('age'))
-    # kg
-    weight = int(args.get('weight'))
-    # cm
-    height = int(args.get('height'))
-    (revert_probability, clean_probability) = predictions.predict_lung_cancer(age, weight, height)
+    ageYears = int(args.get("age"))
+    weightKg = int(args.get("weight"))
+    heightCm = int(args.get("height"))
+    cleanDays = int(args.get("cleanFor"))
 
-    return {'returnsCancerProbability': revert_probability, 'cleanCancerProbability': clean_probability}
+    (revert_probability, clean_probability) = predictions.predict_lung_cancer(
+        ageYears, weightKg, heightCm, cleanDays
+    )
+
+    return {
+        "returnsCancerProbability": revert_probability,
+        "cleanCancerProbability": clean_probability,
+    }
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
