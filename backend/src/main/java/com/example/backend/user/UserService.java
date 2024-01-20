@@ -56,4 +56,13 @@ public class UserService {
                 .map(addiction -> new AddictionDto(addiction.getId(), addiction.getName()))
                 .toList();
     }
+
+    public User getUser(int userId) {
+        var user = userRepository.findById(userId);
+        if (user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No user with id " + userId);
+        }
+
+        return user.get();
+    }
 }

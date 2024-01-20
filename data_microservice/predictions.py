@@ -45,10 +45,8 @@ class LungCancerPred:
 def bmi_factor(weight: int, height: int) -> float:
     return 1
 
-# Returns tuple (return_prob, no_return_prob)
-# ratio of probabilities of lung cancer if person returns to smoking and if person doesn't return to smoking
-# return_prob_age - probability of lung cancer if person returns to smoking 
+# Returns lung cancer prediction msg
 def predict_lung_cancer(age: int, weight: int, height: int, cleanDays: int) -> str:
     future_age = age + 10
     ratio = LungCancerPred.get_prob(future_age, cleanDays) / LungCancerPred.get_prob(age, cleanDays)
-    return f'If you return to smoking, your probability of lung cancer will increase by {ratio:.2f} times!'
+    return f'If you return to smoking, your probability of lung cancer will increase {ratio:.2f} times!'

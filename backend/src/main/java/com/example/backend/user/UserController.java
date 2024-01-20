@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
@@ -38,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping(path = "/addictions")
-    public ResponseEntity<List<AddictionDto>> getUserAddictions(@RequestHeader("userId") int userId) {
+    public ResponseEntity<List<AddictionDto>> getUserAddictions(@RequestHeader("UserID") int userId) {
         var addictions = userService.getUserAddictions(userId);
         return ResponseEntity.ok(addictions);
     }
