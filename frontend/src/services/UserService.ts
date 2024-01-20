@@ -62,6 +62,7 @@ export const getAllUsers = async (): Promise<UserDto | null> => {
 export const getUserAddictions = async (): Promise<AddictionDto[] | null> => {
   try {
     const response = await axios.get("/user/addictions", { headers: putUserIdInHeader() })
+    console.log(response)
 
     console.log(response)
     if (response.status !== 200) {

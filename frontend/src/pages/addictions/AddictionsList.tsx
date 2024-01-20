@@ -38,7 +38,7 @@ const AddictionsList = () => {
       </div>
       <div className="container addictions">
         {addictions?.map((addiction) => (
-          <Addiction name={addiction?.name} />
+          <Addiction id={+addiction?.id} name={addiction?.name} />
         ))}
       </div>
     </div>

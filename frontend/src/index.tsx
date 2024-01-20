@@ -10,6 +10,7 @@ import Profile from 'pages/profile/Profile';
 import Fallback from 'pages/Fallback';
 import Logout from 'pages/auth/Logout';
 import AddictionsList from 'pages/addictions/AddictionsList';
+import AddictionDetails from 'pages/addictions/AddictionDetails';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/addictions",
         element: <AddictionsList />
+      },
+      {
+        path: "/addiction/:addictionId",
+        element: <AddictionDetails />
       }
     ]
   },
