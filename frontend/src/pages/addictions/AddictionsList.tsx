@@ -25,6 +25,16 @@ const AddictionsList = () => {
           </div>
         </div>
       </div>
+      <div className="container addAddiction">
+        <div>
+          Want to <b>Quit</b> something? Add <b>It</b> here!
+        </div>
+        <div>
+          <select>
+            <option>e</option>
+          </select>
+        </div>
+      </div>
       <div className="container addictions">
         {addictions?.map((addiction) => (
           <Addiction name={addiction?.name} />
