@@ -11,7 +11,7 @@ const Addiction: React.FC<AddictionProps> = ({
     <div className="addiction">
       <div className="col">
         <h3>{name}</h3>
-        <span>You are <b className="accent">3 days</b> free</span>
+        <span>You are <b className="accent">3 days</b> clean</span>
       </div>
       <div>
         <button className="showMore">

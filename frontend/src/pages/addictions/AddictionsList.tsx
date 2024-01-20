@@ -31,6 +31,7 @@ const AddictionsList = () => {
         </div>
         <div>
           <select>
+            <option selected disabled>Select Addiction</option>
             <option>e</option>
           </select>
         </div>

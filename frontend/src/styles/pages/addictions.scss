@@ -45,5 +45,29 @@
   .addAddiction {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  select {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 20px;
+    color: white;
+    padding-left: 35px;
+    padding-right: 25px;
+    font-size: 18px;
+    background-position-x: 244px;
+    border-right: 25px solid transparent;
+
+    & option {
+      background-color: transparent;
+      color: black;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
