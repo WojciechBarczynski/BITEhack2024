@@ -1,4 +1,6 @@
 package com.example.backend.predictions.dtos;
 
-public record PredictDto(String predictedMessage) {
+import com.example.backend.report.dtos.MilestoneDto;
+
+public record PredictDto(MilestoneDto achievedMilestone, MilestoneDto nextMilestone) {
 }
