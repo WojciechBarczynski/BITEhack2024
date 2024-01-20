@@ -11,7 +11,7 @@ const SideBar = () => {
   return (
     <div className="sidebar">
       <SideBarLink
-        to="/"
+        to="/profile"
         icon={<HomeOutlinedIcon />}
         label="Main Page"
       />
@@ -21,7 +21,7 @@ const SideBar = () => {
         label="Friends"
       />
       <SideBarLink
-        to="/"
+        to="/addictions"
         icon={<SmokingRoomsOutlinedIcon />}
         label="Addictions"
       />
@@ -37,7 +37,7 @@ const SideBar = () => {
         label="Settings"
       />
       <SideBarLink
-        to="/login"
+        to="/logout"
         icon={<LogoutOutlinedIcon />}
         label="Logout"
       />

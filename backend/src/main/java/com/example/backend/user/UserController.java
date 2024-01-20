@@ -2,8 +2,10 @@ package com.example.backend.user;
 
 import com.example.backend.addiction.dtos.AddictionDto;
 import com.example.backend.user.dtos.UserDto;
+import com.example.backend.user.requests.AddAddictionRequest;
 import com.example.backend.user.requests.LoginRequest;
 import com.example.backend.user.requests.RegisterRequest;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +44,12 @@ public class UserController {
     public ResponseEntity<List<AddictionDto>> getUserAddictions(@RequestHeader("UserID") int userId) {
         var addictions = userService.getUserAddictions(userId);
         return ResponseEntity.ok(addictions);
+    }
+
+    @PostMapping("add-addiction")
+    public ResponseEntity<String> addAddiction(@RequestHeader("UserID") int userId, @RequestBody AddAddictionRequest request){
+        userService.addAddiction(userId, request.id());
+        return ResponseEntity.ok("Addiction added for user");
     }
 }
 

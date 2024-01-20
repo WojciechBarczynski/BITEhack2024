@@ -9,7 +9,7 @@ const ProfileBar = () => {
         <span>
           You are{" "}
           <span className="accent">3 days</span>{" "}
-          free
+          clean
         </span>
         <span>Keep it up!</span>
       </div>

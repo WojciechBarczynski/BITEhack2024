@@ -8,6 +8,8 @@ import Login from 'pages/auth/Login';
 import Register from 'pages/auth/Register';
 import Profile from 'pages/profile/Profile';
 import Fallback from 'pages/Fallback';
+import Logout from 'pages/auth/Logout';
+import AddictionsList from 'pages/addictions/AddictionsList';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />
+      },
+      {
+        path: "/addictions",
+        element: <AddictionsList />
       }
     ]
   },
@@ -40,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />
+      },
+      {
+        path: "/logout",
+        element: <Logout />
       }
     ]
   }

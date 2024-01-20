@@ -43,4 +43,8 @@ public class User {
         this.weightKg = weightKg;
         this.addictions = new ArrayList<>();
     }
+
+    public void addAddiction(Addiction addiction){
+        this.addictions.add(addiction);
+    }
 }
