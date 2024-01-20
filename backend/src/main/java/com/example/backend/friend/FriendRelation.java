@@ -7,9 +7,12 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Optional;
 
 @Entity
 @NoArgsConstructor
@@ -29,4 +32,10 @@ public class FriendRelation {
     @ManyToOne
     @Getter @Setter
     private Addiction addiction;
+
+    public FriendRelation(User addict, User friend, Addiction addiction) {
+        this.addict = addict;
+        this.friend = friend;
+        this.addiction = addiction;
+    }
 }
