@@ -1,6 +1,7 @@
 package com.example.backend.report;
 
 import com.example.backend.friend.FriendRelation;
+import com.example.backend.friend.FriendRelationRepository;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,11 +15,10 @@ import java.util.Date;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 public class Report {
     @Id
     @GeneratedValue
-    private int id;
+    @Getter private int id;
 
     @ManyToOne
     @Getter @Setter private FriendRelation relation;
@@ -26,4 +26,10 @@ public class Report {
     @Getter @Setter private Date reportTime;
 
     @Getter @Setter String postContent;
+
+    public Report(FriendRelation relation, Date date, String postContent){
+        this.postContent = postContent;
+        this.relation = relation;
+        this.postContent = postContent;
+    }
 }
