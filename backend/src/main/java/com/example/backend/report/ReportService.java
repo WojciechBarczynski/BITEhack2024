@@ -4,6 +4,7 @@ import com.example.backend.addiction.AddictionRepository;
 import com.example.backend.friend.FriendRelationRepository;
 import com.example.backend.report.dtos.RecordsForAddictionDto;
 import com.example.backend.report.dtos.ReportDto;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
