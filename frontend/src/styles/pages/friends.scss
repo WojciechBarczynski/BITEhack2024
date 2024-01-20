@@ -1,0 +1,19 @@
+.friendsListPage {
+  width: 100%;
+
+  .content {
+    line-height: 25px;
+  }
+
+  .friendName {
+    font-size: 20px;
+    margin-bottom: 10px;
+
+    svg {
+      height: 20px;
+      scale: 1.5;
+      margin-right: 10px;
+      transform: translateY(2px);
+    }
+  }
+}
