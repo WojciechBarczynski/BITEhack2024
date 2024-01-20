@@ -21,7 +21,7 @@ const SideBar = () => {
         label="Friends"
       />
       <SideBarLink
-        to="/"
+        to="/addictions"
         icon={<SmokingRoomsOutlinedIcon />}
         label="Addictions"
       />
