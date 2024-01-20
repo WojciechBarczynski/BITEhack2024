@@ -25,6 +25,8 @@ public class User {
     @GeneratedValue
     @Getter private int id;
     @Getter @Setter private String nick;
+
+    @Getter @Setter private String password;
     @Getter @Setter private int birthyear;
     @Getter @Setter private int weightKg;
     @Getter @Setter private int heightCm;
@@ -32,8 +34,9 @@ public class User {
     @ManyToMany
     @Getter @Setter private List<Addiction> addictions;
 
-    public User(String nick, int birthyear, int weightKg, int heightCm){
+    public User(String nick, String password, int weightKg, int heightCm, int birthyear){
         this.nick = nick;
+        this.password = password;
         this.birthyear = birthyear;
         this.heightCm = heightCm;
         this.weightKg = weightKg;
