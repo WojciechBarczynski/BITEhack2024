@@ -1,5 +1,7 @@
 import axios from "axios";
 import { putUserIdInHeader } from "./requestsHelpers";
+import { UserDto } from "./dtos/userTypes";
+import { AddictionDto } from "./dtos/addictionTypes";
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -47,8 +49,8 @@ export const userLogout = () => {
   localStorage.removeItem('UserID');
 }
 
-export const getAllUsers = async () => {
-  const response = await axios.get("/all");
+export const getAllUsers = async (): Promise<UserDto | null> => {
+  const response = await axios.get("/user/all");
 
   if (response.status !== 200) {
     return null
@@ -57,12 +59,31 @@ export const getAllUsers = async () => {
   return response.data;
 }
 
-export const getUserAddictions = async () => {
-  const response = await axios.get("/addictions", { headers: putUserIdInHeader() })
+export const getUserAddictions = async (): Promise<AddictionDto | null> => {
+    try{
+        const response = await axios.get("/user/addictions", { headers: putUserIdInHeader() })
 
-  if (response.status !== 200) {
-    return null
-  }
+        if (response.status !== 200) {
+        return null
+        }
 
-  return response.data
+        return response.data
+    }catch (error){
+        return null;
+    }
+}
+
+export const addAddiction = async(addictionId: number) => {
+    try{
+        const response = await axios.post("/user/add-addiction", {id: addictionId}, {
+            headers: putUserIdInHeader()
+        })
+
+        if (response.status === 200){
+            return true
+        }
+        return false
+    }catch (error){
+        return false
+    }
 }
