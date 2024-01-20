@@ -28,7 +28,7 @@ public class FriendController {
         this.addictionRepository = addictionRepository;
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public ResponseEntity<?> addFriendRelation(@RequestParam Integer addictId,
                                                @RequestParam Integer friendId,
                                                @RequestParam Integer addictionId) {

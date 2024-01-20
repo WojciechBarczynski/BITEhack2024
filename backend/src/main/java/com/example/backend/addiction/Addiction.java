@@ -18,6 +18,7 @@ import java.util.List;
 public class Addiction {
     @Id
     @GeneratedValue
+    @Getter
     private int id;
 
     @Getter private String name;
