@@ -59,16 +59,16 @@ export const getAllUsers = async (): Promise<UserDto | null> => {
   return response.data;
 }
 
-export const getUserAddictions = async (): Promise<AddictionDto[] | null> => {
+export const getUserAddictions = async (): Promise<AddictionDto[]> => {
   try {
     const response = await axios.get("/user/addictions", { headers: putUserIdInHeader() })
     if (response.status !== 200) {
-      return null
+      return [];
     }
 
     return response.data
   } catch (error) {
-    return null;
+    return [];
   }
 }
 
