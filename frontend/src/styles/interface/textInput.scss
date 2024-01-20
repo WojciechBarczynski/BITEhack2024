@@ -1,5 +1,8 @@
 .textInput {
   position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
   .iconPositioner {
     position: absolute;
@@ -8,6 +11,7 @@
     align-items: center;
     margin-left: 10px;
     top: 0;
+    left: 10px;
 
     svg {
       scale: 0.9;
@@ -23,11 +27,12 @@
     border-radius: 20px;
     caret-color: white;
     color: white;
-    padding-left: 40px;
-    width: 220px;
+    padding-left: 50px;
+    width: calc(100% - 62px);
+    font-size: 18px;
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     &:focus,

@@ -5,7 +5,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from 'pages/Home';
 import PageLayout from 'components/layout/PageLayout';
 import 'styles/index.scss'
-import Login from 'pages/Login';
+import Login from 'pages/auth/Login';
+import Register from 'pages/auth/Register';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />
+      },
+      {
+        path: "/register",
+        element: <Register />
       }
     ]
   }
