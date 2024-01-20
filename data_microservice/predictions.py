@@ -41,14 +41,21 @@ class LungCancerPred:
         age_risk_log += LungCancerPred.b_coff[age]
         return np.exp(age_risk_log)
         
-
 def bmi_factor(weight: int, height: int) -> float:
-    return 1
+    bmi = weight / (height / 100) ** 2
+    return 1.1 if bmi > 25 else 1
 
 # Returns tuple (return_prob, no_return_prob)
 # ratio of probabilities of lung cancer if person returns to smoking and if person doesn't return to smoking
 # return_prob_age - probability of lung cancer if person returns to smoking 
 def predict_lung_cancer(age: int, weight: int, height: int, cleanDays: int) -> str:
     future_age = age + 10
-    ratio = LungCancerPred.get_prob(future_age, cleanDays) / LungCancerPred.get_prob(age, cleanDays)
-    return f'If you return to smoking, your probability of lung cancer will increase by {ratio:.2f} times!'
+    percent = LungCancerPred.get_prob(future_age, cleanDays) / LungCancerPred.get_prob(age, cleanDays)
+    percent = int(100 * percent - 1)
+    percent *= bmi_factor(weight, height)
+    output = ''
+    if percent > 5:
+        output = f'If you return to smoking, your probability of lung cancer may increase up to {percent}%!'
+    else:
+        output = f'Did you know that if you return to smoking, your probability of getting lung cancer may increase up to 30%?'
+    return output
