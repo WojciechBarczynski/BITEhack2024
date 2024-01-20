@@ -23,7 +23,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-    @Getter private int id;
+    private int id;
     @Getter @Setter private String nick;
 
     @Getter @Setter private String password;
