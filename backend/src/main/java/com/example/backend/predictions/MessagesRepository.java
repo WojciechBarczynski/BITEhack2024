@@ -5,14 +5,12 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import com.sun.tools.javac.Main;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -41,22 +39,18 @@ public class MessagesRepository {
         }
     }
 
-    public String getMessage(String addictionName, Period cleanFor) {
+    public String getMessage(String addictionName, Long daysClean) {
         var name = addictionName.toLowerCase();
         if (name.contains("alcohol")) {
             QuitMessage quitMessage = alcoholMessages.get(0);
-            int cleanForDays = cleanFor.getDays();
             for (QuitMessage msg : alcoholMessages) {
                 quitMessage = msg;
-                if (msg.days() > cleanForDays) {
+                if (msg.days() > daysClean) {
                     break;
                 }
-
             }
-
             return "After " + quitMessage.days() + " days without drinking: " + quitMessage.msg();
         }
-
         return "According to studies, quiting is more probable in supportive environment.";
     }
 }

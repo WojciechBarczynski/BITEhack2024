@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -63,10 +64,10 @@ public class ReportService {
                 .map(report -> new ReportDto(report.getRelation().getFriend().getNick(),
                         report.getPostContent(), report.getReportTime().toString()))
                 .toList();
+        var daysClean = daysClean(getLastUserReport(userId, addictionId));
+        PredictDto msg = predictService.messagePrediction(user.get(), addiction.get(), daysClean);
 
-        PredictDto msg = predictService.messagePrediction(user.get(), addiction.get(), getLastUserReport(userId, addictionId));
-
-        return new RecordsForAddictionDto(addiction.get().getName(), msg.predictedMessage(), reports);
+        return new RecordsForAddictionDto(addiction.get().getName(), msg.predictedMessage(), daysClean, reports);
     }
 
     public Optional<Report> getLastUserReport(int userId, int addictionId) {
@@ -75,5 +76,14 @@ public class ReportService {
 
     public List<Report> getUserReports(int userId) {
         return reportRepository.findAllByRelation_Addict_Id(userId);
+    }
+
+    private Long daysClean(Optional<Report> lastReport) {
+        if (lastReport.isPresent()) {
+            Instant lastReportedDate = lastReport.get().getReportTime().toInstant();
+            return Duration.between(Instant.now(), lastReportedDate).toDays();
+        } else {
+            return 1L;
+        }
     }
 }

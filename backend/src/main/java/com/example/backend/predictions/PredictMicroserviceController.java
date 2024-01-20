@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class PredictMicroserviceController {
-    public static Optional<String> predictLungCancer(User user, Period cleanFor) {
+    public static Optional<String> predictLungCancer(User user, Long daysClean) {
         HttpClient client = HttpClient.newHttpClient();
         var age = Year.now().getValue() - user.getBirthyear();
         URI url = null;
@@ -31,7 +31,7 @@ public class PredictMicroserviceController {
                     .setParameter("age", String.valueOf(age))
                     .setParameter("weight", String.valueOf(user.getWeightKg()))
                     .setParameter("height", String.valueOf(user.getHeightCm()))
-                    .setParameter("cleanFor", String.valueOf(cleanFor.getDays()))
+                    .setParameter("cleanFor", String.valueOf(daysClean))
                     .build();
         } catch (URISyntaxException e) {
             return Optional.empty();
