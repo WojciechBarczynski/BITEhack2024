@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from 'pages/Home';
 import PageLayout from 'components/layout/PageLayout';
 import 'styles/index.scss'
+import Login from 'pages/Login';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
     path: "/",
     children: [
       {
-        path: "/test2",
-        element: <div>test2</div>
+        path: "/login",
+        element: <Login />
       }
     ]
   }

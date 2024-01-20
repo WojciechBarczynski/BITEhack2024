@@ -1,0 +1,12 @@
+.actionBlock {
+  width: 95%;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  row-gap: 1em;
+}

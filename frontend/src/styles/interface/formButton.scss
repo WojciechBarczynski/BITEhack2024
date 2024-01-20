@@ -1,0 +1,23 @@
+.formButton {
+  position: relative;
+
+  button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 20px;
+    caret-color: white;
+    color: black;
+    width: 272px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+
+    &:hover {
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+    }
+  }
+}

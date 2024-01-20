@@ -1,0 +1,46 @@
+.textInput {
+  position: relative;
+
+  .iconPositioner {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    top: 0;
+
+    svg {
+      scale: 0.9;
+      opacity: 0.6;
+    }
+  }
+
+  input {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 20px;
+    caret-color: white;
+    color: white;
+    padding-left: 40px;
+    width: 220px;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      outline: none;
+
+      &+.iconPositioner svg {
+        opacity: 1;
+      }
+    }
+
+    &:focus {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+}
