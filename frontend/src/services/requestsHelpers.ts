@@ -1,0 +1,1 @@
+export const putUserIdInHeader = () => ({"UserID": window.localStorage.getItem("UserID")})
