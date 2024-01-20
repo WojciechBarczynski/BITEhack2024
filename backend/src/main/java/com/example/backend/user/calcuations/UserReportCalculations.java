@@ -7,7 +7,6 @@ import com.example.backend.report.Report;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 public class UserReportCalculations {
     public static List<UserAddictionDto> userAddictionDtos(List<Addiction> addictions, List<Report> reports) {
@@ -26,10 +25,10 @@ public class UserReportCalculations {
         }
 
         return addictions.stream().map(addiction -> {
-            Optional<Long> clearFor = Optional.empty();
+            Long clearFor = 0L;
             var daysClean = daysCleanPerAddiction.get(addiction);
             if (daysClean != null) {
-                clearFor = Optional.of(daysClean);
+                clearFor = daysClean;
             }
             return new UserAddictionDto(addiction.getId(), addiction.getName(), clearFor);
         }).toList();
