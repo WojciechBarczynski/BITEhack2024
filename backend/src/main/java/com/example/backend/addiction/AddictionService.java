@@ -16,7 +16,7 @@ public class AddictionService {
     }
 
     public AddictionDto createAddiction(String name) {
-        if (addictionRepository.findByName(name).isEmpty()) {
+        if (addictionRepository.findByName(name).isPresent()) {
             throw new ResponseStatusException((HttpStatus.CONFLICT));
         }
         var addiction = new Addiction(name);
