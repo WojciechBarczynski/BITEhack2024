@@ -23,6 +23,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
+    @Getter
     private int id;
     @Getter @Setter private String nick;
 
@@ -41,9 +42,5 @@ public class User {
         this.heightCm = heightCm;
         this.weightKg = weightKg;
         this.addictions = new ArrayList<>();
-    }
-
-    public void addAddiction(Addiction addiction){
-        addictions.add(addiction);
     }
 }
