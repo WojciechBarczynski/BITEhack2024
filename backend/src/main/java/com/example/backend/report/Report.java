@@ -19,16 +19,13 @@ public class Report {
     @Id
     @GeneratedValue
     @Getter private int id;
-
     @ManyToOne
     @Getter @Setter private FriendRelation relation;
-
     @Getter @Setter private Date reportTime;
-
-    @Getter @Setter String postContent;
+    @Getter @Setter private String postContent;
 
     public Report(FriendRelation relation, Date date, String postContent){
-        this.postContent = postContent;
+        this.reportTime = date;
         this.relation = relation;
         this.postContent = postContent;
     }

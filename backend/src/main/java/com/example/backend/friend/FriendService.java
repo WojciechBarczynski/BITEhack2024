@@ -30,7 +30,7 @@ public class FriendService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No user with id " + friendId);
         }
 
-        var addiction = addictionRepository.findById(addictId);
+        var addiction = addictionRepository.findById(addictionId);
         if (addiction.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No addiction with id " + addictionId);
         }
