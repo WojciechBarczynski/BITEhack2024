@@ -11,8 +11,6 @@ export const getReportsForAddiction = async (addictionId?: string): Promise<any>
     }
   },);
 
-  console.log("XXX", response)
-
   if (response.status !== 200) {
     return null;
   }
