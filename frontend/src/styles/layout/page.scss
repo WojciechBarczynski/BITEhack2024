@@ -1,0 +1,21 @@
+.page {
+  margin: auto;
+  margin-top: 50px;
+  max-width: 1355px;
+
+  .headerBox {
+    width: 100%;
+    font-size: 30px;
+    margin-bottom: 2rem;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5rem;
+
+    main {
+      flex-grow: 1;
+    }
+  }
+}
