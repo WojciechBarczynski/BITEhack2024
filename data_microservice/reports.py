@@ -24,7 +24,6 @@ class ReportValidation:
         self.reported = np.ndarray(shape=(len(reportedId), 2))
         self.reported[:, 0] = reportedId
         self.reported[:, 1] = reportedScore
-        self.reportedScore = np.sum(np.log(self.reported[:, 1]))
         
         all_reporters = np.ndarray(shape=(len(reportersId), 3))
         all_reporters[:, 0] = reportersId
@@ -35,15 +34,19 @@ class ReportValidation:
         self.attackingTeam = np.ndarray(shape=(attackers_num, 2))
         self.attackingTeam[:, 0] = all_reporters[all_reporters[:, 2] == True][:, 0]
         self.attackingTeam[:, 1] = all_reporters[all_reporters[:, 2] == True][:, 1]
-        self.attackingTeamScore = np.sum(np.log(self.attackingTeam[:, 1]))
-        print(self.attackingTeam.shape)
         
         defenders_num = np.sum(all_reporters[:, 2] == False)
         self.defendingTeam = np.ndarray(shape=(defenders_num, 2))
         self.defendingTeam[:, 0] = all_reporters[all_reporters[:, 2] == False][:, 0]
         self.defendingTeam[:, 1] = all_reporters[all_reporters[:, 2] == False][:, 1]
+
+        self.make_team_scores()
+        
+
+    def make_team_scores(self) -> np.array:
+        self.attackingTeamScore = np.sum(np.log(self.attackingTeam[:, 1]))
         self.defendingTeamScore = np.sum(np.log(self.defendingTeam[:, 1]))
-        print(self.defendingTeam.shape)
+        self.reportedScore = np.sum(np.log(self.reported[:, 1]))
 
 
     def agree_with_report(self) -> np.array:
@@ -52,7 +55,7 @@ class ReportValidation:
         self.reported[:, 1] = np.minimum(self.reported[:, 1] + 1, 100)
         return np.concatenate((self.attackingTeam, self.defendingTeam, self.reported), axis=0)
         
-    
+
     def try_to_remove_report(self) -> (bool, np.array):
         if (np.sqrt(2) * self.attackingTeamScore < self.defendingTeamScore + self.reportedScore / np.sqrt(2)):
             return True, np.concatenate((self.attackingTeam, self.defendingTeam, self.reported), axis=0)
