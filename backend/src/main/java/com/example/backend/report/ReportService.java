@@ -1,6 +1,9 @@
 package com.example.backend.report;
 
+import com.example.backend.addiction.AddictionRepository;
 import com.example.backend.friend.FriendRelationRepository;
+import com.example.backend.report.dtos.RecordsForAddictionDto;
+import com.example.backend.report.dtos.ReportDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,10 +15,14 @@ import java.util.List;
 public class ReportService {
     private final ReportRepository reportRepository;
     private final FriendRelationRepository friendRelationRepository;
+    private final AddictionRepository addictionRepository;
 
-    public ReportService(ReportRepository reportRepository, FriendRelationRepository friendRelationRepository){
+    public ReportService(ReportRepository reportRepository,
+                         FriendRelationRepository friendRelationRepository,
+                         AddictionRepository addictionRepository){
         this.reportRepository = reportRepository;
         this.friendRelationRepository = friendRelationRepository;
+        this.addictionRepository = addictionRepository;
     }
 
     public void addReport(int friendId, int addictId, int addictionId, String postContent){
@@ -29,7 +36,19 @@ public class ReportService {
         reportRepository.save(report);
     }
 
-    public List<Report> getReportsForAddiction(int userId, int addictionId){
-        return reportRepository.findAllByRelation_Addict_IdAndRelation_Addiction_Id(userId, addictionId);
+    public RecordsForAddictionDto getReportsForAddiction(int userId, int addictionId){
+        var rawReports =  reportRepository.findAllByRelation_Addict_IdAndRelation_Addiction_Id(userId, addictionId);
+        var reports = rawReports
+                .stream()
+                .map(report -> new ReportDto(report.getRelation().getFriend().getNick(),
+                        report.getPostContent(), report.getReportTime().toString()))
+                .toList();
+
+        var addiction = addictionRepository.findById(addictionId);
+        if (addiction.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Addiction with such ID not found");
+        }
+
+        return new RecordsForAddictionDto(addiction.get().getName(), reports);
     }
 }
