@@ -13,14 +13,9 @@ def hello_world():
     heightCm = int(args.get("height"))
     cleanDays = int(args.get("cleanFor"))
 
-    (revert_probability, clean_probability) = predictions.predict_lung_cancer(
-        ageYears, weightKg, heightCm, cleanDays
-    )
+    msg = predictions.predict_lung_cancer(ageYears, weightKg, heightCm, cleanDays)
 
-    return {
-        "returnsCancerProbability": revert_probability,
-        "cleanCancerProbability": clean_probability,
-    }
+    return msg
 
 
 if __name__ == "__main__":

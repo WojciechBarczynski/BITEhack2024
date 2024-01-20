@@ -1,7 +1,7 @@
 .page {
   margin: auto;
   margin-top: 50px;
-  max-width: 1355px;
+  max-width: min(1355px, 90%);
 
   .headerBox {
     width: 100%;

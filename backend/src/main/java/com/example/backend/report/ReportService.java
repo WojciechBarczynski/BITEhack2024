@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReportService {
@@ -25,10 +26,10 @@ public class ReportService {
         this.addictionRepository = addictionRepository;
     }
 
-    public void addReport(int friendId, int addictId, int addictionId, String postContent){
+    public void addReport(int friendId, int addictId, int addictionId, String postContent) {
         var friendRelation = friendRelationRepository
                 .findByAddict_IdAndFriend_IdAndAddiction_Id(addictId, friendId, addictionId);
-        if(friendRelation == null){
+        if (friendRelation == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Such a relation does not exist");
         }
 
@@ -50,5 +51,9 @@ public class ReportService {
         }
 
         return new RecordsForAddictionDto(addiction.get().getName(), reports);
+    }
+
+    public Optional<Report> getLastUserReport(int userId, int addictionId) {
+        return reportRepository.findTopByRelation_Addict_IdAndRelation_Addiction_IdOrderByReportTimeDesc(userId, addictionId);
     }
 }

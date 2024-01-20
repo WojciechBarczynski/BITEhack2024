@@ -31,8 +31,7 @@ public class Addiction {
         this.users = new ArrayList<>();
     }
 
-    public void addAddict(User user){
-        users.add(user);
+    public void addAddict(User addict) {
+        users.add(addict);
     }
-
 }

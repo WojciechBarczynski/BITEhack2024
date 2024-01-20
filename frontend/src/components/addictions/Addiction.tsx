@@ -1,12 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 type AddictionProps = {
+  id: number,
   name: string
 }
 
 const Addiction: React.FC<AddictionProps> = ({
-  name
+  id, name
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="addiction">
       <div className="col">
@@ -14,7 +18,7 @@ const Addiction: React.FC<AddictionProps> = ({
         <span>You are <b className="accent">3 days</b> clean</span>
       </div>
       <div>
-        <button className="showMore">
+        <button className="showMore" onClick={() => navigate(`/addiction/${id}`)}>
           Show more
         </button>
       </div>
