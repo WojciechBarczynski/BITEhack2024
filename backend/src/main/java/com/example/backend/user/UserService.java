@@ -67,8 +67,9 @@ public class UserService {
         }
 
         return user.get();
+    }
 
-    public void addAddiction(int userId, int addictionId){
+    public void addAddiction(int userId, int addictionId) {
         var user = userRepository.findById(userId);
 
         if (user.isEmpty()){

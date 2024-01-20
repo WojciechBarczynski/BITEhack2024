@@ -30,4 +30,8 @@ public class Addiction {
         this.name = name;
         this.users = new ArrayList<>();
     }
+
+    public void addAddict(User addict) {
+        users.add(addict);
+    }
 }

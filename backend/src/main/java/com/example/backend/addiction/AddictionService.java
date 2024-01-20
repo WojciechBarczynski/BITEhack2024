@@ -31,6 +31,8 @@ public class AddictionService {
         }
 
         return addiction.get();
+    }
+
 
     public List<Addiction> getAllAddictions(){
         return addictionRepository.findAll();
