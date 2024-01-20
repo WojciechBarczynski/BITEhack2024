@@ -1,0 +1,33 @@
+.actionBlock {
+  width: 95%;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  row-gap: 1.2em;
+}
+
+a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: underline;
+  }
+}
+
+.doubleRow {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+
+  & input {
+    width: 100% !important;
+  }
+}
