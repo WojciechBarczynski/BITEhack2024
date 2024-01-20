@@ -12,7 +12,7 @@ const Addiction: React.FC<AddictionProps> = ({
   const navigate = useNavigate();
 
   return (
-    <div className="addiction">
+    <div className="dataItem">
       <div className="col">
         <h3>{name}</h3>
         <span>You are <b className="accent">3 days</b> clean</span>

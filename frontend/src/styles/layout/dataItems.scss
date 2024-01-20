@@ -1,0 +1,44 @@
+.dataItems {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  .dataItem {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.15), 2px 2px 5px rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: calc(100% - 20px);
+    border-radius: 0;
+
+    .col {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+    }
+
+    h3 {
+      margin: 0;
+    }
+
+    .showMore {
+      background-color: rgba(48, 117, 142, 0.6);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.6), 2px 2px 5px rgba(0, 0, 0, 0.8);
+      border: none;
+      padding: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 3px;
+      color: white;
+      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(23, 93, 119, 0.8);
+      }
+    }
+  }
+}

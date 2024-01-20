@@ -16,7 +16,7 @@ const SideBar = () => {
         label="Main Page"
       />
       <SideBarLink
-        to="/"
+        to="/friends"
         icon={<PeopleAltOutlinedIcon />}
         label="Friends"
       />

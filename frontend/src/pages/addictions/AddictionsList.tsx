@@ -54,7 +54,7 @@ const AddictionsList = () => {
           </select>
         </div>
       </div>
-      <div className="container addictions">
+      <div className="container dataItems">
         {addictions?.map((addiction) => (
           <Addiction id={+addiction?.id} name={addiction?.name} />
         ))}
