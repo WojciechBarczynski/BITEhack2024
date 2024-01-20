@@ -56,4 +56,8 @@ public class ReportService {
     public Optional<Report> getLastUserReport(int userId, int addictionId) {
         return reportRepository.findTopByRelation_Addict_IdAndRelation_Addiction_IdOrderByReportTimeDesc(userId, addictionId);
     }
+
+    public List<Report> getUserReports(int userId) {
+        return reportRepository.findAllByRelation_Addict_Id(userId);
+    }
 }
