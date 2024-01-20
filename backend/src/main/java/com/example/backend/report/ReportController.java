@@ -25,7 +25,7 @@ public class ReportController {
     @PostMapping
     public ResponseEntity<String> addReport(@RequestHeader("UserID") int friendId, @RequestBody AddReportRequest request){
         reportService.addReport(friendId, request.addictId(), request.addictionId(), request.postContent());
-        return ResponseEntity.ok("Friend reported succesfully");
+        return ResponseEntity.ok("Friend reported successfully");
     }
 
     @GetMapping
