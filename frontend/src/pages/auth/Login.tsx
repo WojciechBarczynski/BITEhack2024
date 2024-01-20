@@ -4,7 +4,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import TextInput from 'components/interface/TextInput';
 import FormButton from 'components/interface/FormButton';
 import { Link, useNavigate } from 'react-router-dom';
-import { userLogin } from 'services/UserService';
+import { userLogin } from 'services/LoginService';
 
 const Login = () => {
   const navigate = useNavigate();

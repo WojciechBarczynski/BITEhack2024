@@ -23,42 +23,46 @@ export const userLogin = async (username: string, password: string) => {
 };
 
 export const userRegister = async (
-    nick: string,
-    password: string,
-    weight: number,
-    height: number,
-    birthyear: number
+  nick: string,
+  password: string,
+  weight: number,
+  height: number,
+  birthyear: number
 ) => {
-    const body = {
-        nick, password, weight, height, birthyear
+  const body = {
+    nick, password, weight, height, birthyear
+  }
+  try {
+    const response = await axios.post('/user/register', body);
+    if (response.status === 200) {
+      return true
     }
-    try{
-        const response = await axios.post('/user/register', body);
-        if (response.status === 200){
-            return true
-        }
-        return false
-    }catch (error){
-        return false
-    }
+    return false
+  } catch (error) {
+    return false
+  }
+}
+
+export const userLogout = () => {
+  localStorage.removeItem('UserID');
 }
 
 export const getAllUsers = async () => {
-    const response = await axios.get("/all");
+  const response = await axios.get("/all");
 
-    if (response.status !== 200){
-        return null
-    }
+  if (response.status !== 200) {
+    return null
+  }
 
-    return response.data;
+  return response.data;
 }
 
 export const getUserAddictions = async () => {
-    const response = await axios.get("/addictions", {headers: putUserIdInHeader()})
+  const response = await axios.get("/addictions", { headers: putUserIdInHeader() })
 
-    if (response.status !== 200){
-        return null
-    }
+  if (response.status !== 200) {
+    return null
+  }
 
-    return response.data
+  return response.data
 }
