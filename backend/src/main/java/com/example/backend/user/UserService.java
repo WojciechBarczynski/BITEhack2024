@@ -1,7 +1,7 @@
 package com.example.backend.user;
 
+import com.example.backend.addiction.Addiction;
 import com.example.backend.addiction.AddictionRepository;
-import com.example.backend.addiction.dtos.AddictionDto;
 import com.example.backend.user.dtos.UserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -47,17 +47,14 @@ public class UserService {
         return users.stream().map(user -> new UserDto(user.getId(), user.getNick())).toList();
     }
 
-    public List<AddictionDto> getUserAddictions(int userId) {
+    public List<Addiction> getUserAddictions(int userId) {
         var user = userRepository.findById(userId);
         if (user.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No user with id " + userId);
         }
 
         return user.get()
-                .getAddictions()
-                .stream()
-                .map(addiction -> new AddictionDto(addiction.getId(), addiction.getName()))
-                .toList();
+                .getAddictions();
     }
 
     public User getUser(int userId) {
@@ -72,13 +69,13 @@ public class UserService {
     public void addAddiction(int userId, int addictionId) {
         var user = userRepository.findById(userId);
 
-        if (user.isEmpty()){
+        if (user.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No such user");
         }
 
         var addiction = addictionRepository.findById(addictionId);
 
-        if(addiction.isEmpty()){
+        if (addiction.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No such addiction");
         }
 

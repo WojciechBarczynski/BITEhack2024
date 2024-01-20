@@ -25,7 +25,7 @@ const AddictionsList = () => {
   }
 
   const addictionsToAdd = allAddictions.filter(filterAddictions)
-  
+
   const handleChange = async (event: any) => {
     await addAddiction(event.target.value)
     refreshAddictions();
@@ -47,8 +47,8 @@ const AddictionsList = () => {
         <div>
           Want to <b>Quit</b> something? Add <b>It</b> here!
         </div>
-        <div>8
-          <select onChange={handleChange}> {/** TODO: make it return to default option */} 
+        <div>
+          <select onChange={handleChange}> {/** TODO: make it return to default option */}
             <option selected disabled>Select Addiction</option>
             {addictionsToAdd.map(add => (<option key={add.id} value={add.id}> {add.name} </option>))}
           </select>
