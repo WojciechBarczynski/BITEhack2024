@@ -59,31 +59,32 @@ export const getAllUsers = async (): Promise<UserDto | null> => {
   return response.data;
 }
 
-export const getUserAddictions = async (): Promise<AddictionDto | null> => {
-    try{
-        const response = await axios.get("/user/addictions", { headers: putUserIdInHeader() })
+export const getUserAddictions = async (): Promise<AddictionDto[] | null> => {
+  try {
+    const response = await axios.get("/user/addictions", { headers: putUserIdInHeader() })
 
-        if (response.status !== 200) {
-        return null
-        }
-
-        return response.data
-    }catch (error){
-        return null;
+    console.log(response)
+    if (response.status !== 200) {
+      return null
     }
+
+    return response.data
+  } catch (error) {
+    return null;
+  }
 }
 
-export const addAddiction = async(addictionId: number) => {
-    try{
-        const response = await axios.post("/user/add-addiction", {id: addictionId}, {
-            headers: putUserIdInHeader()
-        })
+export const addAddiction = async (addictionId: number) => {
+  try {
+    const response = await axios.post("/user/add-addiction", { id: addictionId }, {
+      headers: putUserIdInHeader()
+    })
 
-        if (response.status === 200){
-            return true
-        }
-        return false
-    }catch (error){
-        return false
+    if (response.status === 200) {
+      return true
     }
+    return false
+  } catch (error) {
+    return false
+  }
 }
