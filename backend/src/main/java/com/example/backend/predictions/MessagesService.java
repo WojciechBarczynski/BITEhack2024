@@ -51,7 +51,7 @@ public class MessagesService {
     }
 
     private static MilestoneDto archivedMilestone(List<QuitMessage> messages, Long daysClean) {
-        QuitMessage quitMessage = messages.get(0);
+        QuitMessage quitMessage = new QuitMessage(0L, "You just started, don't give up!");
         for (QuitMessage msg : messages) {
             if (msg.days() > daysClean) {
                 break;

@@ -67,7 +67,7 @@ public class ReportService {
         Long daysClean = daysClean(getLastUserReport(userId, addictionId));
         MilestoneSumUpDto sumUpDto = predictService.messagePrediction(user.get(), addiction.get(), daysClean);
 
-        return new RecordsForAddictionDto(addiction.get().getName(), sumUpDto, reports);
+        return new RecordsForAddictionDto(addiction.get().getName(), sumUpDto, daysClean, reports);
     }
 
     public Optional<Report> getLastUserReport(int userId, int addictionId) {
