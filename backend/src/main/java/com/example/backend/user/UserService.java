@@ -1,5 +1,6 @@
 package com.example.backend.user;
 
+import com.example.backend.addiction.dtos.AddictionDto;
 import com.example.backend.user.dtos.UserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,18 @@ public class UserService {
     public List<UserDto> getAll() {
         var users = userRepository.findAll();
         return users.stream().map(user -> new UserDto(user.getId(), user.getNick())).toList();
+    }
+
+    public List<AddictionDto> getUserAddictions(int userId) {
+        var user = userRepository.findById(userId);
+        if (user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No user with id " + userId);
+        }
+
+        return user.get()
+                .getAddictions()
+                .stream()
+                .map(addiction -> new AddictionDto(addiction.getId(), addiction.getName()))
+                .toList();
     }
 }

@@ -1,14 +1,11 @@
 package com.example.backend.addiction;
 
-import com.example.backend.addiction.Addiction;
-import com.example.backend.addiction.AddictionRepository;
-import com.example.backend.user.User;
-import com.example.backend.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/addiction")
@@ -17,7 +14,7 @@ public class AddictionController {
 
     @Autowired
     public AddictionController(AddictionService addictionService) {
-        this.addictionService =addictionService;
+        this.addictionService = addictionService;
     }
 
     @PostMapping("/{addictionName}")

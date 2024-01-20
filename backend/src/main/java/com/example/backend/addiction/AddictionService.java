@@ -5,8 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
-
 @Service
 public class AddictionService {
     private final AddictionRepository addictionRepository;
@@ -16,7 +14,7 @@ public class AddictionService {
     }
 
     public AddictionDto createAddiction(String name) {
-        if(addictionRepository.findByName(name) != null) {
+        if (addictionRepository.findByName(name).isEmpty()) {
             throw new ResponseStatusException((HttpStatus.CONFLICT));
         }
         var addiction = new Addiction(name);
