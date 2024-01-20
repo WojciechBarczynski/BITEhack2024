@@ -2,30 +2,27 @@ package com.example.backend.predictions;
 
 import com.example.backend.addiction.Addiction;
 import com.example.backend.predictions.dtos.PredictDto;
-import com.example.backend.report.Report;
+import com.example.backend.report.dtos.MilestoneDto;
+import com.example.backend.report.dtos.MilestoneSumUpDto;
 import com.example.backend.user.User;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
 import java.util.Optional;
 
 public class PredictService {
-    private final MessagesRepository messagesRepository;
+    private final MessagesService messagesService;
 
     public PredictService() {
-        this.messagesRepository = new MessagesRepository();
+        this.messagesService = new MessagesService();
     }
 
-    public PredictDto messagePrediction(User user, Addiction addiction, Long daysClean) {
+    public MilestoneSumUpDto messagePrediction(User user, Addiction addiction, Long daysClean) {
+        Optional<String> predictedMsg = Optional.empty();
         if (addiction.getName().toLowerCase().contains("smoking")) {
-            var predictedMsg = PredictMicroserviceController.predictLungCancer(user, daysClean);
-            if (predictedMsg.isPresent()) {
-                return new PredictDto(predictedMsg.get());
-            }
+            predictedMsg = PredictMicroserviceController.predictLungCancer(user, daysClean);
         }
 
-        var msg = messagesRepository.getMessage(addiction.getName(), daysClean);
-        return new PredictDto(msg);
+        MilestoneDto archivedMilestone = messagesService.archivedMilestone(addiction.getName(), daysClean);
+        MilestoneDto nextMilestone = messagesService.nextMilestone(addiction.getName(), daysClean);
+        return new MilestoneSumUpDto(archivedMilestone, nextMilestone, predictedMsg);
     }
 }

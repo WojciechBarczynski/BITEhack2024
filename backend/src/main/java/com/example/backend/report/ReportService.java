@@ -4,7 +4,7 @@ import com.example.backend.addiction.Addiction;
 import com.example.backend.addiction.AddictionRepository;
 import com.example.backend.friend.FriendRelationRepository;
 import com.example.backend.predictions.PredictService;
-import com.example.backend.predictions.dtos.PredictDto;
+import com.example.backend.report.dtos.MilestoneSumUpDto;
 import com.example.backend.report.dtos.RecordsForAddictionDto;
 import com.example.backend.report.dtos.ReportDto;
 import com.example.backend.user.User;
@@ -13,10 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.*;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -64,10 +64,10 @@ public class ReportService {
                 .map(report -> new ReportDto(report.getRelation().getFriend().getNick(),
                         report.getPostContent(), report.getReportTime().toString()))
                 .toList();
-        var daysClean = daysClean(getLastUserReport(userId, addictionId));
-        PredictDto msg = predictService.messagePrediction(user.get(), addiction.get(), daysClean);
+        Long daysClean = daysClean(getLastUserReport(userId, addictionId));
+        MilestoneSumUpDto sumUpDto = predictService.messagePrediction(user.get(), addiction.get(), daysClean);
 
-        return new RecordsForAddictionDto(addiction.get().getName(), msg.predictedMessage(), daysClean, reports);
+        return new RecordsForAddictionDto(addiction.get().getName(), sumUpDto, reports);
     }
 
     public Optional<Report> getLastUserReport(int userId, int addictionId) {

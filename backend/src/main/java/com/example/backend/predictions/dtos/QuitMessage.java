@@ -1,4 +1,4 @@
 package com.example.backend.predictions.dtos;
 
-public record QuitMessage(int days, String msg) {
+public record QuitMessage(Long days, String msg) {
 }
