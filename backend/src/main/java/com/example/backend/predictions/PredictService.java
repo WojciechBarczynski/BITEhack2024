@@ -17,22 +17,15 @@ public class PredictService {
         this.messagesRepository = new MessagesRepository();
     }
 
-    public PredictDto messagePrediction(User user, Addiction addiction, Optional<Report> lastReport) {
-        var cleanFor = Period.ofDays(1);
-        if (lastReport.isPresent()) {
-            var lastReportedDate = LocalDate.ofInstant(lastReport.get().getReportTime().toInstant(), ZoneId.systemDefault());
-            cleanFor = Period.between(LocalDate.now(), lastReportedDate);
-        }
-        ;
-
+    public PredictDto messagePrediction(User user, Addiction addiction, Long daysClean) {
         if (addiction.getName().toLowerCase().contains("smoking")) {
-            var predictedMsg = PredictMicroserviceController.predictLungCancer(user, cleanFor);
+            var predictedMsg = PredictMicroserviceController.predictLungCancer(user, daysClean);
             if (predictedMsg.isPresent()) {
                 return new PredictDto(predictedMsg.get());
             }
         }
 
-        var msg = messagesRepository.getMessage(addiction.getName(), cleanFor);
+        var msg = messagesRepository.getMessage(addiction.getName(), daysClean);
         return new PredictDto(msg);
     }
 }
