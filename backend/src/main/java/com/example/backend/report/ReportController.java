@@ -1,5 +1,6 @@
 package com.example.backend.report;
 
+import com.example.backend.report.dtos.RecordsForAddictionDto;
 import com.example.backend.report.dtos.ReportDto;
 import com.example.backend.report.requests.AddReportRequest;
 import org.springframework.http.ResponseEntity;
@@ -29,13 +30,8 @@ public class ReportController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ReportDto>> getReportsForAddiction(@RequestHeader("UserID") int userId, @RequestParam int addictionId){
-        var reports = reportService.getReportsForAddiction(userId, addictionId);
-        var response = reports
-                .stream()
-                .map(report -> new ReportDto(report.getRelation().getFriend().getNick(),
-                report.getPostContent(), report.getReportTime().toString()))
-                .toList();
+    public ResponseEntity<RecordsForAddictionDto> getReportsForAddiction(@RequestHeader("UserID") int userId, @RequestParam int addictionId){
+        var response = reportService.getReportsForAddiction(userId, addictionId);
         return ResponseEntity.ok(response);
     }
 }
