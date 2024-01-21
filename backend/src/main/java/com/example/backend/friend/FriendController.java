@@ -30,8 +30,8 @@ public class FriendController {
     }
 
     @PostMapping()
-    public ResponseEntity<?> addFriendRelation(@RequestHeader("UserID") int friendId, @RequestBody AddRelationRequest request) {
-        friendService.createFriendRelation(request.addictId(), friendId, request.addictionId());
+    public ResponseEntity<?> addFriendRelation(@RequestHeader("UserID") int addictId, @RequestBody AddRelationRequest request) {
+        friendService.createFriendRelation(addictId, request.friendId(), request.addictionId());
         return ResponseEntity.ok().build();
     }
 
