@@ -26,10 +26,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - run: cd backend && ./gradlew build && ./gradlew check && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push
+      - run: cd backend && ./gradlew build && ./gradlew check && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push -u origin HEAD:master
 
       - name: Set up python
         uses: actions/setup-python@v1
         with:
           python-version: '3.9'
-      - run: cd data_microservice && pip install -r requirements.txt && pylint app.py && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push
+      - run: cd data_microservice && pip install -r requirements.txt && pylint app.py && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push -u origin HEAD:master
