@@ -10,6 +10,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 const SideBar = () => {
   return (
     <div className="sidebar">
+      <h1>Quit It!</h1>
       <SideBarLink
         to="/profile"
         icon={<HomeOutlinedIcon />}

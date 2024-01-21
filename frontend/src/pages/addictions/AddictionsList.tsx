@@ -48,8 +48,8 @@ const AddictionsList = () => {
           Want to <b>Quit</b> something? Add <b>It</b> here!
         </div>
         <div>
-          <select onChange={handleChange}> {/** TODO: make it return to default option */}
-            <option selected disabled>Select Addiction</option>
+          <select value="default" onChange={handleChange}> {/** TODO: make it return to default option */}
+            <option value="default" selected disabled>Select Addiction</option>
             {addictionsToAdd.map(add => (<option key={add.id} value={add.id}> {add.name} </option>))}
           </select>
         </div>

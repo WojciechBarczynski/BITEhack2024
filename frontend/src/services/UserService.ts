@@ -1,11 +1,11 @@
 import axios from "axios";
 import { putUserIdInHeader } from "./requestsHelpers";
-import { UserDto } from "./dtos/userTypes";
+import { FullUserDto, UserDto } from "./dtos/userTypes";
 import { AddictionDto } from "./dtos/addictionTypes";
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
-export const userLogin = async (username: string, password: string) => {
+export const userLogin = async (username: string, password: string): Promise<FullUserDto | null> => {
   try {
     const response = await axios.post('/user/login', {
       nick: username,
@@ -14,7 +14,7 @@ export const userLogin = async (username: string, password: string) => {
 
     if (response.status === 200 && response?.data?.id) {
       localStorage.setItem('UserID', response.data.id);
-      return response.data.id
+      return response.data
     } else {
       return null
     }
@@ -47,6 +47,21 @@ export const userRegister = async (
 
 export const userLogout = () => {
   localStorage.removeItem('UserID');
+}
+
+export const getUserById = async (userId: number): Promise<UserDto | null> => {
+  try{
+    const response = await axios.get(`/user/${userId}`);
+
+    if (response.status !== 200){
+      return null
+    }
+
+    return response.data
+  }catch(error){
+    console.error(error)
+    return null;
+  }
 }
 
 export const getAllUsers = async (): Promise<UserDto | null> => {

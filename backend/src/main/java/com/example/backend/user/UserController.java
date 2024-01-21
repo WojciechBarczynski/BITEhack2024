@@ -6,6 +6,7 @@ import com.example.backend.addiction.dtos.UserAddictionDto;
 import com.example.backend.report.Report;
 import com.example.backend.report.ReportService;
 import com.example.backend.user.calcuations.UserReportCalculations;
+import com.example.backend.user.dtos.FullUserDto;
 import com.example.backend.user.dtos.UserDto;
 import com.example.backend.user.requests.AddAddictionRequest;
 import com.example.backend.user.requests.LoginRequest;
@@ -38,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/login")
-    public ResponseEntity<UserDto> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<FullUserDto> login(@RequestBody LoginRequest request) {
         var user = userService.loginUser(request.nick(), request.password());
         return ResponseEntity.ok(user);
     }
@@ -56,6 +57,11 @@ public class UserController {
         List<UserAddictionDto> userAddictionDtos = UserReportCalculations.userAddictionDtos(addictions, userReports);
 
         return ResponseEntity.ok(userAddictionDtos);
+    }
+
+    public ResponseEntity<UserDto> getUserById(@PathVariable("id") int id){
+        var user = userService.getUser(id);
+        return ResponseEntity.ok(new UserDto(user.getId(), user.getNick()));
     }
 
     @PostMapping("/addiction")

@@ -30,3 +30,23 @@
     }
   }
 }
+
+.addictionDetailsPage {
+  .report {
+    line-height: 25px;
+
+    svg {
+      height: 30px;
+      transform: translateY(8px);
+    }
+
+    .footer {
+      margin-left: auto;
+      display: block;
+      width: max-content;
+      color: #bbb;
+    }
+
+    padding-bottom: 5px;
+  }
+}

@@ -37,4 +37,10 @@ public class AddictionController {
                 .toList();
         return ResponseEntity.ok(addictionsDto);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<AddictionDto> getAddiction(@PathVariable("id") int id){
+        var addiction = addictionService.getAddiction(id);
+        return ResponseEntity.ok(new AddictionDto(addiction.getId(), addiction.getName()));
+    }
 }
