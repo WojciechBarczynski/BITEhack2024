@@ -49,6 +49,21 @@ export const userLogout = () => {
   localStorage.removeItem('UserID');
 }
 
+export const getUserById = async (userId: number): Promise<UserDto | null> => {
+  try{
+    const response = await axios.get(`/user/${userId}`);
+
+    if (response.status !== 200){
+      return null
+    }
+
+    return response.data
+  }catch(error){
+    console.error(error)
+    return null;
+  }
+}
+
 export const getAllUsers = async (): Promise<UserDto | null> => {
   const response = await axios.get("/user/all");
 

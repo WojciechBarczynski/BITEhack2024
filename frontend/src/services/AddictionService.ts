@@ -12,3 +12,18 @@ export const getAllAddictions = async (): Promise<AddictionDto[]> => {
 
     return response.data;
 }
+
+export const getAddictionById = async (addictionId: number): Promise<AddictionDto | null> => {
+    try{
+      const response = await axios.get(`/addiction/${addictionId}`);
+  
+      if (response.status !== 200){
+        return null
+      }
+  
+      return response.data
+    }catch(error){
+      console.error(error)
+      return null;
+    }
+  }
