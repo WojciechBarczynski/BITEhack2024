@@ -5,6 +5,10 @@
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 50px;
+  align-self: flex-start;
 
   .sidebarLink {
     display: flex;

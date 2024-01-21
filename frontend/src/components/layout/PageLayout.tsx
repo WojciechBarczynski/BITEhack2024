@@ -9,9 +9,6 @@ import ProfileBar from './profilebar/ProfileBar';
 const PageLayout = () => {
   return (
     <div className="page">
-      <div className="headerBox">
-        <h1>Quit It!</h1>
-      </div>
       <div className="content">
         <div>
           <SideBar />
