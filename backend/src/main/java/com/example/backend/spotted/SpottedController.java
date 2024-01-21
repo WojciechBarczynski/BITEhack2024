@@ -26,9 +26,7 @@ public class SpottedController {
 
     @GetMapping(path = "")
     public ResponseEntity<SpottedDays> getAddictionSpottedDays(@RequestHeader("UserID") int userId, @RequestParam int addictionId) {
-        System.out.println("dupa");
         List<Date> dates = reportService.addictionReportDates(userId, addictionId);
-        System.out.println("dupa1");
         List<Long> spottedDates = dates.stream()
                 .map(date -> Duration.between(Instant.now(), date.toInstant()).toDays())
                 .toList();
