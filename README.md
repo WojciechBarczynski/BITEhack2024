@@ -43,7 +43,7 @@ Our app has the most important and few unique features
 
 ## In Progress
 
-Moreover, we designed some features for further development that will be avaliable in near future!
+Moreover, we designed some features for further development that will be available soon!
 
 1. **Extended Support for Various Addictions and Medical Information**
    - The application provides support for a broader range of addictions, allowing users to monitor different habits.
@@ -63,7 +63,7 @@ Moreover, we designed some features for further development that will be avaliab
 
 ## Installation
 
-Since database in hosted on servers provided by AGH, connection requires using AGH VPN.
+Since the database in hosted on servers provided by AGH, connection requires using AGH VPN.
 
 ### Frontend
 
