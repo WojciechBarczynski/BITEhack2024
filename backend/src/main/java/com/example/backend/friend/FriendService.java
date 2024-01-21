@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 public class FriendService {
     private final FriendRelationRepository friendRelationRepository;
@@ -37,5 +39,9 @@ public class FriendService {
 
         var relation = new FriendRelation(addict.get(), friend.get(), addiction.get());
         friendRelationRepository.save(relation);
+    }
+
+    public List<FriendRelation> getAllAddicts(int userId){
+        return friendRelationRepository.findAllByFriend_Id(userId);
     }
 }
