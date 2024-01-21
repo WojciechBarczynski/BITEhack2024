@@ -35,7 +35,7 @@ public class FriendController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/allAdicts")
+    @GetMapping("/allAddicts")
     public ResponseEntity<List<AllAddictsResponse>> getAllAddicts(@RequestHeader("UserID") int userId){
         var response = friendService.getAllAddicts(userId);
 
