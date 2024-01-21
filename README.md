@@ -15,7 +15,9 @@ Our app has the most important and few unique features
 1. **Reports**
    - Users have the option to submit reports on behalf of friends or acquaintances who may have broken their resolutions.
    - Submitted reports are handled with sensitivity, maintaining privacy and respecting the well-being of the individuals involved.
-   - The feature fosters a collaborative environment, promoting a sense of shared responsibility and support in the journey to overcome addiction.
+   - The feature fosters a collaborative environment, promoting a sense of shared responsibility and support in the journey to overcome addiction
+![report](https://github.com/WojciechBarczynski/BITEhack2024/assets/104033489/20b0a0a5-bf39-46f5-bb1e-5dd8e1c34e3e)
+
   
 2. **Predictive Lung Cancer Probability**
    - In the event of breaking a resolution, the application issues a reminder to the user about the potential health risks associated with returning to the addiction.
@@ -25,15 +27,19 @@ Our app has the most important and few unique features
 
 3. **Adding Monitored Addictions**
    - Users can add and monitor specific addictions within the application.
+![418218331_706209608327307_4459337217946631608_n](https://github.com/WojciechBarczynski/BITEhack2024/assets/104033489/fa1a2ff0-f07e-48cb-a546-70694d8fa33f)
 
 4. **Graphs Tracking Relapses**
    - Visual representation of relapse occurrences over time, aiding users in identifying trends and triggers.
+![bars](https://github.com/WojciechBarczynski/BITEhack2024/assets/104033489/5b784963-7a71-4586-9924-f35a21d4544e)
+
 
 5. **Adding New Resolutions**
    - Enable users to set and add new resolutions or goals related to their journey of overcoming addiction.
 
 6. **Milestones**
    - Celebrate and track significant milestones achieved in the process of overcoming addiction, motivating users with a sense of accomplishment.
+![417457323_3627269250873359_6680792068160749918_n](https://github.com/WojciechBarczynski/BITEhack2024/assets/104033489/044d601d-e7aa-4757-9685-625c247baf90)
 
 ## In Progress
 
