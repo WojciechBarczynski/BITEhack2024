@@ -13,14 +13,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - run: ls -la
-      - run: cd frontend
-      - run: npm install
-      #- run: npm start
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          run: | 
+            cd frontend
+            npm install
+          
+      - name: Set up spring
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+          run: | 
+            cd backend
+            ./gradlew build
 
-      - run: cd backend
-      - run: build gradle project
-
-      - run: cd data_microservice
-      - run: pip install -r requirements.txt
-      #- run: python3 app.py
+      - name: Set up python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+          run: | 
+            cd data_microservice
+            pip install -r requirements.txt
