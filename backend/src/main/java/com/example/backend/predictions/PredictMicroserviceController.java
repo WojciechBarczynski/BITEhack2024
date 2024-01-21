@@ -1,6 +1,5 @@
 package com.example.backend.predictions;
 
-import com.example.backend.report.Report;
 import com.example.backend.user.User;
 import org.apache.http.client.utils.URIBuilder;
 
@@ -9,10 +8,7 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.LocalDate;
-import java.time.Period;
 import java.time.Year;
-import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;

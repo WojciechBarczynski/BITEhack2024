@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class LungCancerPred:
     a_coff = {
         0: 0.0536,
@@ -30,7 +31,7 @@ class LungCancerPred:
         80: -10.5848,
     }
     days_per_year = 365
-    
+
     @staticmethod
     def get_prob(age: int, cleanDays: int) -> float:
         age = max(age, 30)
@@ -40,10 +41,12 @@ class LungCancerPred:
         age_risk_log *= (age - (cleanDays / LungCancerPred.days_per_year))
         age_risk_log += LungCancerPred.b_coff[age]
         return np.exp(age_risk_log)
-        
+
+
 def bmi_factor(weight: int, height: int) -> float:
     bmi = weight / (height / 100) ** 2
     return 1.1 if bmi > 25 else 1
+
 
 # Returns tuple (return_prob, no_return_prob)
 # ratio of probabilities of lung cancer if person returns to smoking and if person doesn't return to smoking

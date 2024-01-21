@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,12 +20,15 @@ public class Addiction {
     @Getter
     private int id;
 
-    @Getter private String name;
+    @Getter
+    private String name;
 
     @ManyToMany
-    @Getter @Setter private List<User> users;
+    @Getter
+    @Setter
+    private List<User> users;
 
-    public Addiction(String name){
+    public Addiction(String name) {
         this.name = name;
         this.users = new ArrayList<>();
     }
