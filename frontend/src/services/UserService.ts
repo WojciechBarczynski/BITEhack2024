@@ -14,6 +14,11 @@ export const userLogin = async (username: string, password: string): Promise<Ful
 
     if (response.status === 200 && response?.data?.id) {
       localStorage.setItem('UserID', response.data.id);
+      localStorage.setItem('username', response.data.nick);
+      localStorage.setItem('weight', response.data.weight);
+      localStorage.setItem('height', response.data.height);
+      localStorage.setItem('birthyear', response.data.birthyear);
+      
       return response.data
     } else {
       return null
