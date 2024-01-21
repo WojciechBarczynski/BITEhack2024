@@ -59,6 +59,7 @@ public class UserController {
         return ResponseEntity.ok(userAddictionDtos);
     }
 
+    @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable("id") int id){
         var user = userService.getUser(id);
         return ResponseEntity.ok(new UserDto(user.getId(), user.getNick()));

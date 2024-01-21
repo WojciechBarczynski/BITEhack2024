@@ -27,7 +27,7 @@ const SideBar = () => {
         label="Addictions"
       />
       <SideBarLink
-        to="/"
+        to="/progress"
         icon={<AutoGraphOutlinedIcon />}
         label="Progress"
       />

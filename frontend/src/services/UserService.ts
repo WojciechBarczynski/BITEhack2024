@@ -14,6 +14,11 @@ export const userLogin = async (username: string, password: string): Promise<Ful
 
     if (response.status === 200 && response?.data?.id) {
       localStorage.setItem('UserID', response.data.id);
+      localStorage.setItem('username', response.data.nick);
+      localStorage.setItem('weight', response.data.weight);
+      localStorage.setItem('height', response.data.height);
+      localStorage.setItem('birthyear', response.data.birthyear);
+      
       return response.data
     } else {
       return null
@@ -50,15 +55,15 @@ export const userLogout = () => {
 }
 
 export const getUserById = async (userId: number): Promise<UserDto | null> => {
-  try{
+  try {
     const response = await axios.get(`/user/${userId}`);
 
-    if (response.status !== 200){
+    if (response.status !== 200) {
       return null
     }
 
     return response.data
-  }catch(error){
+  } catch (error) {
     console.error(error)
     return null;
   }
@@ -89,7 +94,7 @@ export const getUserAddictions = async (): Promise<AddictionDto[]> => {
 
 export const addAddiction = async (addictionId: number) => {
   try {
-    const response = await axios.post("/user/add-addiction", { id: addictionId }, {
+    const response = await axios.post("/user/addiction", { id: addictionId }, {
       headers: putUserIdInHeader()
     })
 
