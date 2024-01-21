@@ -16,20 +16,20 @@ jobs:
       - name: Set up Git
         run: git config --global user.email "szymon.rusiecki@proton.me" && git config --global user.name "Rusiek" && git fetch && git checkout ${{ github.sha }} && git pull origin master --rebase -X theirs
 
-      - name: Set up node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - run: cd frontend && npm install && npm run build 
+      # - name: Set up node
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: '12.x'
+      # - run: cd frontend && npm install && npm run build 
 
       - name: Set up spring
         uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - run: cd backend && ./gradlew build
+      - run: cd backend && ./gradlew build && ./gradlew check && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push -u origin HEAD:master
 
       - name: Set up python
         uses: actions/setup-python@v1
         with:
-          python-version: '3.x'
-      - run: cd data_microservice && pip install -r requirements.txt
+          python-version: '3.9'
+      - run: cd data_microservice && pip install -r requirements.txt && pylint app.py && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push -u origin HEAD:master
