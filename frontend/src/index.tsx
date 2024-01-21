@@ -12,6 +12,7 @@ import Logout from 'pages/auth/Logout';
 import AddictionsList from 'pages/addictions/AddictionsList';
 import AddictionDetails from 'pages/addictions/AddictionDetails';
 import FriendsList from 'pages/friends/FriendsList';
+import ReportFriend from 'pages/friends/ReportFriend';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/friends",
         element: <FriendsList />
+      },
+      {
+        path: "/report/:addictionId/:friendId",
+        element: <ReportFriend />
       }
     ]
   },

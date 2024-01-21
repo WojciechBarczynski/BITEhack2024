@@ -1,7 +1,7 @@
 import { AddictionDto } from "./addictionTypes"
 
 export interface AllAddictsWithAddictionsDto {
-    id: number
+    addictId: number
     name: string
-    addictions: AddictionDto[] 
+    addictions: AddictionDto[]
 }

@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HelpIcon from '@mui/icons-material/Help';
-import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+import { getAllAddictsWithAddictions } from 'services/FriendRelationService';
+import { AllAddictsWithAddictionsDto as AddictWithAddictionsDto } from 'services/dtos/friendRelationTypes';
+import { AddictionDto } from 'services/dtos/addictionTypes';
+import { useNavigate } from 'react-router';
 
 const FriendsList = () => {
+  const navigate = useNavigate();
+  const [addicts, setAddicts] = useState<AddictWithAddictionsDto[]>([]);
+
+  useEffect(() => {
+    getAllAddictsWithAddictions().then((newAddicts: AddictWithAddictionsDto[]) => {
+      setAddicts(newAddicts)
+    })
+  }, [])
+
   return (
     <div className="friendsListPage">
       <div className="container info">
@@ -19,25 +31,29 @@ const FriendsList = () => {
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="friendName">
-          <SupervisedUserCircleIcon /> <b>Arek</b>
-        </div>
-
-        <div className="dataItems">
-          <div className="container dataItem">
-            <div className="col">
-              <h3>alcohol</h3>
-            </div>
-            <div>
-              <button className="showMore">
-                Report
-              </button>
-            </div>
+      {addicts.map((addict: AddictWithAddictionsDto, index: number) => (
+        <div className="container" key={index}>
+          <div className="friendName">
+            <SupervisedUserCircleIcon /> <b>{addict?.name}</b>
           </div>
-        </div>
 
-      </div>
+          <div className="dataItems">
+            {addict?.addictions?.map((addiction: AddictionDto) => (
+              <div className="container dataItem" style={{ marginBottom: 0 }}>
+                <div className="col">
+                  <h3>{addiction?.name}</h3>
+                </div>
+                <div>
+                  <button className="showMore" onClick={() => navigate(`/report/${addiction?.id}/${addict?.addictId}`)}>
+                    Report
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      ))}
     </div>
   );
 };
