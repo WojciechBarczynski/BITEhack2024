@@ -14,8 +14,8 @@ const Login = () => {
   const [failedLogin, setFailedLogin] = useState(false)
 
   const onLogin = async () => {
-    const userId = await userLogin(username, password);
-    if (userId) {
+    const user = await userLogin(username, password);
+    if (user) {
       navigate("/profile")
     } else {
       setFailedLogin(true)
