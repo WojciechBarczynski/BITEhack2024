@@ -20,6 +20,7 @@ jobs:
           run: | 
             cd frontend
             npm install
+            npm run build
           
       - name: Set up spring
         uses: actions/setup-java@v1
@@ -28,6 +29,7 @@ jobs:
           run: | 
             cd backend
             ./gradlew build
+            
 
       - name: Set up python
         uses: actions/setup-python@v1
@@ -36,3 +38,4 @@ jobs:
           run: | 
             cd data_microservice
             pip install -r requirements.txt
+            python app.py
