@@ -1,42 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { getReportsForAddiction } from 'services/ReportService';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { AllReportsDto } from 'services/dtos/reportTypes';
 
 const AddictionDetails = () => {
   const { addictionId } = useParams()
+  const [addictionInfo, setAddictionInfo] = useState<AllReportsDto | null>(null)
 
   useEffect(() => {
     addictionId && getReportsForAddiction(+addictionId).then((reports: AllReportsDto | null) => {
-      console.log(reports)
+      setAddictionInfo(reports)
     })
   }, [])
 
+  const daysPassed = addictionInfo?.milestones?.archived?.day || 0
+
   return (
-    <div>
-      <div className="container thumbsup">
+    <div className="addictionDetailsPage scrollable">
+      {daysPassed >= 0 && <div className="container thumbsup">
         <div className="icon">
           <ThumbUpOffAltIcon />
         </div>
         <div className="content">
           <div>
-            In this panel you can see your <b>addictions</b> and also <b>add new ones</b>
+            You've been clean from <b>{addictionInfo?.name}</b> for <b>{addictionInfo?.daysClean}</b> days!<br /><br />
+            On day <b>{addictionInfo?.milestones?.next?.day}</b> you will see the following results:<br />
+            {addictionInfo?.milestones?.next?.message}
           </div>
         </div>
-      </div>
-      <div className="container thumbsdown">
-        <div className="icon">
-          <SentimentVeryDissatisfiedIcon />
+      </div>}
+
+      {addictionInfo?.reports?.map((report) => (
+        <div className="container report">
+          Your friend <b>{report?.nick}</b> noticed you breaking your resolutions!<br />
+          <StickyNote2Icon /> {report?.postContent}
+          <div className="footer"><AccessAlarmIcon /> {report?.date}</div>
         </div>
-        <div className="content">
-          <div>
-            In this panel you can see your <b>addictions</b> and also <b>add new ones</b>
-          </div>
-        </div>
-      </div>
-      Showing addiction: {addictionId}
+      ))}
+
+      { }
     </div>
   );
 };
