@@ -2,6 +2,7 @@ package com.example.backend.user;
 
 import com.example.backend.addiction.Addiction;
 import com.example.backend.addiction.AddictionRepository;
+import com.example.backend.user.dtos.FullUserDto;
 import com.example.backend.user.dtos.UserDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public UserDto loginUser(String nick, String password) {
+    public FullUserDto loginUser(String nick, String password) {
         var checkUser = userRepository.findByNick(nick);
         if (checkUser == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No user with nickname " + nick + " found");
@@ -39,7 +40,11 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Provided password was incorrect");
         }
 
-        return new UserDto(checkUser.getId(), checkUser.getNick());
+        return new FullUserDto(checkUser.getId(),
+                checkUser.getNick(),
+                checkUser.getWeightKg(),
+                checkUser.getHeightCm(),
+                checkUser.getBirthyear());
     }
 
     public List<UserDto> getAll() {
