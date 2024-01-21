@@ -15,13 +15,13 @@ jobs:
 
       - name: Build frontend
         run: |
-          mkdir frontend
+          cd frontend
           npm install
           npm start
 
       - name: Build backend
         run: |
-          mkdir backend
+          cd backend
           build gradle project
 
       - name: Build data microservice
