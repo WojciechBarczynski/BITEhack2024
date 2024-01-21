@@ -14,12 +14,12 @@ class ReportValidation:
             reportersDecision == [] or reportersDecision == None or \
             reportedId == [] or reportedId == None or \
             reportedScore == [] or reportedScore == None):
-            raise ValueError("Invalid input")
+            raise ValueError("Invalid input data")
         
         if (len(reportersId) != len(reportersScores) or \
             len(reportersId) != len(reportersDecision) or \
             len(reportedId) != len(reportedScore)):
-            raise ValueError("Invalid input")
+            raise ValueError("Invalid length of input data")
          
         self.reported = np.ndarray(shape=(len(reportedId), 2))
         self.reported[:, 0] = reportedId
