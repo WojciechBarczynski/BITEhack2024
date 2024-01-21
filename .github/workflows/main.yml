@@ -33,4 +33,3 @@ jobs:
         with:
           python-version: '3.x'
       - run: cd data_microservice && pip install -r requirements.txt && pylint app.py && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push origin HEAD:master
- 
