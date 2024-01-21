@@ -30,4 +30,4 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: '3.9'
-      - run: cd data_microservice && pip install -r requirements.txt && pylint app.py && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push origin HEAD:master
+      - run: cd cancer_prediction_microservice && pip install -r requirements.txt && pylint app.py && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push origin HEAD:master
