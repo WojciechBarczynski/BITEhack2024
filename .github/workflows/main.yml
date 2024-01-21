@@ -1,4 +1,4 @@
-name: Does it works?
+name: Does it work?
 
 on:
   push:
@@ -21,6 +21,9 @@ jobs:
             cd frontend
             npm install
             npm run build
+            npm run lint
+            git add .
+            git diff-index --quiet HEAD || git commit -m "Lint code" && git push
           
       - name: Set up spring
         uses: actions/setup-java@v1
@@ -29,8 +32,10 @@ jobs:
           run: | 
             cd backend
             ./gradlew build
-            
-
+            ./gradlew check
+            git add .
+            git diff-index --quiet HEAD || git commit -m "Lint code" && git push
+          
       - name: Set up python
         uses: actions/setup-python@v1
         with:
@@ -38,4 +43,6 @@ jobs:
           run: | 
             cd data_microservice
             pip install -r requirements.txt
-            python app.py
+            pylint app.py
+            git add .
+            git diff-index --quiet HEAD || git commit -m "Lint code" && git push
