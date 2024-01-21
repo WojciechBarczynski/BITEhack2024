@@ -21,6 +21,7 @@ Our app has the most important and few unique features
    - In the event of breaking a resolution, the application issues a reminder to the user about the potential health risks associated with returning to the addiction.
    - This personalized insight aims to encourage users to stay committed to their resolutions by providing them with tangible health-related consequences.
    - The feature integrates the predictive model responsibly, using accurate information to motivate users in their journey towards overcoming addiction and improving their well-being.
+   ![bitehack2024-prez6](https://github.com/WojciechBarczynski/BITEhack2024/assets/79122265/ca6d7450-5087-4bb8-8ffd-17dd57ad9aef)
 
 3. **Adding Monitored Addictions**
    - Users can add and monitor specific addictions within the application.
