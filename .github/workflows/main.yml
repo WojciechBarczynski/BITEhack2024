@@ -3,6 +3,8 @@ name: Does it work?
 on:
   push:
     branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   build:
