@@ -1,0 +1,31 @@
+name: Does it works?
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build frontend
+        run: |
+          mkdir frontend
+          npm install
+          npm start
+
+      - name: Build backend
+        run: |
+          mkdir backend
+          build gradle project
+
+      - name: Build data microservice
+        run: |
+          cd data_microservice
+          pip install -r requirements.txt
+          python3 app.py
