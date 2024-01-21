@@ -86,4 +86,8 @@ public class ReportService {
             return 1L;
         }
     }
+
+    public List<Date> addictionReportDates(int userId, int addictionId) {
+        return reportRepository.findAllDatesByAddictIdAndAddictionId(userId, addictionId);
+    }
 }

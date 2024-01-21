@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -58,13 +59,12 @@ public class UserController {
         return ResponseEntity.ok(userAddictionDtos);
     }
 
-    @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable("id") int id){
         var user = userService.getUser(id);
         return ResponseEntity.ok(new UserDto(user.getId(), user.getNick()));
     }
 
-    @PostMapping("add-addiction")
+    @PostMapping("/addiction")
     public ResponseEntity<String> addAddiction(@RequestHeader("UserID") int userId, @RequestBody AddAddictionRequest request) {
         userService.addAddiction(userId, request.id());
         return ResponseEntity.ok("Addiction added for user");
