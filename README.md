@@ -56,6 +56,8 @@ Moreover, we designed some features for further development that will be avaliab
 
 ## Installation
 
+Since database in hosted on servers provided by AGH, connection requires using AGH VPN.
+
 ### Frontend
 
 ```console
