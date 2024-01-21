@@ -2,9 +2,9 @@ name: Does it work?
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "${{ github.head_ref }}" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "${{ github.head_ref }}" ]
 
 jobs:
   build:
