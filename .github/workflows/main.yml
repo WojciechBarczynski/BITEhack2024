@@ -7,37 +7,19 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build-frontend:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build
-        run: |
-          cd frontend
-          npm install
-          npm run build --if-present
+      - run: cd frontend
+      - run: npm install
+      #- run: npm start
 
-  build-backend:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - run: cd backend
+      - run: build gradle project
 
-      - name: Build backend
-        run: |
-          cd backend
-          build gradle project
-
-  build-data-microservice:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Build data microservice
-        run: |
-          cd data_microservice
-          pip install -r requirements.txt
-          python3 app.py
+      - run: cd data_microservice
+      - run: pip install -r requirements.txt
+      #- run: python3 app.py
