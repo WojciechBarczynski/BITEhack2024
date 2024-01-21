@@ -2,9 +2,9 @@ name: Does it work?
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "${{ github.head_ref }}" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "${{ github.head_ref }}" ]
 
 jobs:
   build:
@@ -20,16 +20,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - run: cd frontend && npm install && npm run build && npm run lint && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push origin HEAD:master
+      - run: cd frontend && npm install && npm run build && npm run lint && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push
           
       - name: Set up spring
         uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - run: cd backend && ./gradlew build && ./gradlew check && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push origin HEAD:master
+      - run: cd backend && ./gradlew build && ./gradlew check && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push
           
       - name: Set up python
         uses: actions/setup-python@v1
         with:
           python-version: '3.x'
-      - run: cd data_microservice && pip install -r requirements.txt && pylint app.py && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push origin HEAD:master
+      - run: cd data_microservice && pip install -r requirements.txt && pylint app.py && git add -A . && git diff-index --quiet HEAD || git commit --allow-empty -m "Lint code" && git push
