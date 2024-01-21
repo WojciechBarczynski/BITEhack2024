@@ -5,7 +5,7 @@ const ProfileBar = () => {
   const weight = localStorage.getItem("weight");
   const height = localStorage.getItem("height");
   const birthyear = localStorage.getItem("birthyear");
-  
+
   return (
     <div className="profilebar">
       <img src={process.env.PUBLIC_URL + '/images/avatar.jpg'} alt="My cool image" />
@@ -13,7 +13,7 @@ const ProfileBar = () => {
         <h3>Hi, <span className="accent">{username}</span></h3>
         <span>
           You are{" "}
-          <span className="accent">3 days</span>{" "}
+          <span className="accent">5 days</span>{" "}
           clean
         </span>
         <span>Keep it up!</span>

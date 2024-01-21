@@ -13,21 +13,40 @@ import AddictionsList from 'pages/addictions/AddictionsList';
 import AddictionDetails from 'pages/addictions/AddictionDetails';
 import FriendsList from 'pages/friends/FriendsList';
 import ReportFriend from 'pages/friends/ReportFriend';
+import ProgressPage from 'pages/progress/ProgressPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 const router = createBrowserRouter([
+  //For paths without layout
+  {
+    path: "/",
+    children: [
+      {
+        path: "/",
+        element: <Login />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/register",
+        element: <Register />
+      },
+      {
+        path: "/logout",
+        element: <Logout />
+      }
+    ]
+  },
   //For paths with default (Page) layout
   {
     path: "/",
     element: <PageLayout />,
     children: [
-      {
-        path: "/",
-        element: <Fallback />,
-      },
       {
         path: "/profile",
         element: <Profile />
@@ -47,27 +66,13 @@ const router = createBrowserRouter([
       {
         path: "/report/:addictionId/:friendId",
         element: <ReportFriend />
+      },
+      {
+        path: "/progress",
+        element: <ProgressPage />
       }
     ]
   },
-  //For paths without layout
-  {
-    path: "/",
-    children: [
-      {
-        path: "/login",
-        element: <Login />
-      },
-      {
-        path: "/register",
-        element: <Register />
-      },
-      {
-        path: "/logout",
-        element: <Logout />
-      }
-    ]
-  }
 
 ]);
 
