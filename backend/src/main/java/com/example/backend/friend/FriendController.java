@@ -5,13 +5,7 @@ import com.example.backend.friend.requests.AddRelationRequest;
 import com.example.backend.friend.responses.AllAddictsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,22 +30,21 @@ public class FriendController {
     }
 
     @GetMapping("/allAddicts")
-    public ResponseEntity<List<AllAddictsResponse>> getAllAddicts(@RequestHeader("UserID") int userId){
+    public ResponseEntity<List<AllAddictsResponse>> getAllAddicts(@RequestHeader("UserID") int userId) {
         var response = friendService.getAllAddicts(userId);
 
         var idToNameMap = new HashMap<Integer, String>();
         var idToAddictionList = new HashMap<Integer, List<AddictionDto>>();
 
-        for (FriendRelation relation : response){
+        for (FriendRelation relation : response) {
             var addictId = relation.getAddict().getId();
             var addictName = relation.getAddict().getNick();
             var addictionId = relation.getAddiction().getId();
             var addictionName = relation.getAddiction().getName();
 
-            if (idToNameMap.containsKey(addictId)){
+            if (idToNameMap.containsKey(addictId)) {
                 idToAddictionList.get(addictId).add(new AddictionDto(addictionId, addictionName));
-            }
-            else{
+            } else {
                 idToNameMap.put(addictId, addictName);
                 var addictionsList = new ArrayList<AddictionDto>();
                 addictionsList.add(new AddictionDto(addictionId, addictionName));
@@ -61,7 +54,7 @@ public class FriendController {
 
         var allAddictsList = new ArrayList<AllAddictsResponse>();
 
-        for (Map.Entry<Integer, String> entry : idToNameMap.entrySet()){
+        for (Map.Entry<Integer, String> entry : idToNameMap.entrySet()) {
             var key = entry.getKey();
             var nick = entry.getValue();
             var listOfAddictions = idToAddictionList.get(key);

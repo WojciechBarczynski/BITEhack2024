@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+// Most of those methods are to prevent N+1
 @Repository
 public interface ReportRepository extends JpaRepository<Report, Integer> {
     List<Report> findAllByRelation_Addict_IdAndRelation_Addiction_Id(int addictId, int addictionId);
