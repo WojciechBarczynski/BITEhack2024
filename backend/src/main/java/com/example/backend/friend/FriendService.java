@@ -41,7 +41,7 @@ public class FriendService {
         friendRelationRepository.save(relation);
     }
 
-    public List<FriendRelation> getAllAddicts(int userId){
+    public List<FriendRelation> getAllAddicts(int userId) {
         return friendRelationRepository.findAllByFriend_Id(userId);
     }
 }

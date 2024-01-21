@@ -1,7 +1,6 @@
 package com.example.backend.predictions;
 
 import com.example.backend.addiction.Addiction;
-import com.example.backend.predictions.dtos.PredictDto;
 import com.example.backend.report.dtos.MilestoneDto;
 import com.example.backend.report.dtos.MilestoneSumUpDto;
 import com.example.backend.user.User;

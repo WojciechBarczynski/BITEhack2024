@@ -1,7 +1,6 @@
 package com.example.backend.user;
 
 import com.example.backend.addiction.Addiction;
-import com.example.backend.addiction.dtos.AddictionDto;
 import com.example.backend.addiction.dtos.UserAddictionDto;
 import com.example.backend.report.Report;
 import com.example.backend.report.ReportService;
@@ -15,11 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/user")
@@ -60,7 +55,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable("id") int id){
+    public ResponseEntity<UserDto> getUserById(@PathVariable("id") int id) {
         var user = userService.getUser(id);
         return ResponseEntity.ok(new UserDto(user.getId(), user.getNick()));
     }

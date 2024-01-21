@@ -34,7 +34,7 @@ public class AddictionService {
     }
 
 
-    public List<Addiction> getAllAddictions(){
+    public List<Addiction> getAllAddictions() {
         return addictionRepository.findAll();
     }
 }
