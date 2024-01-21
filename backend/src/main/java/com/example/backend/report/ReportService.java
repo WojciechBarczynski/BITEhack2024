@@ -58,7 +58,7 @@ public class ReportService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Addiction with such ID not found");
         }
 
-        var rawReports = reportRepository.findAllByRelation_Addict_IdAndRelation_Addiction_IdOOrderByReportTimeDesc(userId, addictionId);
+        var rawReports = reportRepository.findAllByRelation_Addict_IdAndRelation_Addiction_IdOrderByReportTimeDesc(userId, addictionId);
         var reports = rawReports
                 .stream()
                 .map(report -> new ReportDto(report.getRelation().getFriend().getNick(),
