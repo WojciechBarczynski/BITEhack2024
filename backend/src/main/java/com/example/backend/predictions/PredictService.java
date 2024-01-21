@@ -17,7 +17,7 @@ public class PredictService {
 
     public MilestoneSumUpDto messagePrediction(User user, Addiction addiction, Long daysClean) {
         Optional<String> predictedMsg = Optional.empty();
-        if (addiction.getName().toLowerCase().contains("smoking")) {
+        if (addiction.getName().toLowerCase().contains("cigarettes")) {
             predictedMsg = PredictMicroserviceController.predictLungCancer(user, daysClean);
         }
 

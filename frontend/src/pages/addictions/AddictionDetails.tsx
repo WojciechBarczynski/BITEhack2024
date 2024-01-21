@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { useParams } from 'react-router';
 import { getReportsForAddiction } from 'services/ReportService';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
@@ -32,6 +33,18 @@ const AddictionDetails = () => {
           </div>
         </div>
       </div>}
+
+      {addictionInfo?.milestones?.predictionMsg && <div className="container info warning">
+        <div className="icon">
+          <WarningAmberIcon />
+        </div>
+        <div className="content">
+          <div>
+            {addictionInfo.milestones.predictionMsg}
+          </div>
+        </div>
+      </div>}
+
 
       {addictionInfo?.reports?.map((report) => (
         <div className="container report">
