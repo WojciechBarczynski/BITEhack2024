@@ -1,5 +1,5 @@
 # BITEhack2024 - Quit It
-Welcome to **Quit It**! - an innovative application designed to support individuals in overcoming their habits with the help of friends or aiding their loved ones in their journey to break free from addiction. With a unique feature that seamlessly integrates community support and the proximity of your closest allies, **Quit It**! provides an effective platform for both you and your friends to conquer habits together.
+Welcome to **Quit It**! - an innovative social-media platform designed to support individuals in overcoming their habits with the help of friends. Unique features that seamlessly integrate community support and the proximity of your closest provide an effective platform for both you and your friends to conquer habits together.
 
 ## Introduction
 Supporting individuals in overcoming addiction plays a [crucial](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3917180/pdf/IJNMR-19-19.pdf) role in their success on the challenging journey toward health and regaining control over their lives. Being open, empathetic, and providing support can expedite the recovery process, helping individuals conquer the challenges associated with addiction. Support not only builds strong social bonds but also inspires positive changes, creating an atmosphere where every step towards health is acknowledged and encouraged.
